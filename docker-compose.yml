@@ -2,19 +2,21 @@ version: "3.9"
 
 services:
   db:
-    image: mysql:8.0.23
+    image: mysql:5.7
     environment:
       - MYSQL_HOST=localhost
       - MYSQL_PORT=3306
       - MYSQL_ROOT_HOST=%
-      - MYSQL_DATABASE=bug
+      - MYSQL_DATABASE=timetabling
       - MYSQL_USER=dbuser
       - MYSQL_PASSWORD=dbpassword
-      - MYSQL_ROOT_PASSWORD=dbadmin
+      - MYSQL_ROOT_PASSWORD=dbpassword
     ports:
       - "3302:3306"
     networks:
       - db-net
+    volumes:
+      - dbvolume:/var/lib/mysql
 
   backend:
     build: ./backend
@@ -35,3 +37,6 @@ services:
 networks:
   db-net:
     driver: bridge
+
+volumes:
+  dbvolume:
