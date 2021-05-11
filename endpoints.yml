@@ -1,0 +1,85 @@
+auth/register:
+	POST:
+		headers:
+			Content-Type: application/json
+		json:
+			- username
+			- password
+		returns:
+			user: 
+				- id
+				- username
+			token: <token>
+		status: 200 Ok
+
+auth/login:
+	 POST:
+		headers:
+			Content-Type: application/json
+		json:
+			- username
+			- password
+		returns:
+			user: 
+				- id
+				- username
+			token: "<token>"
+		status: 200 Ok
+
+auth/user:
+	GET:
+		headers:
+			Authorization: Token <token>
+		returns:
+			- id
+			- username
+		status: 200 Ok
+
+auth/logout:
+	POST:
+		headers:
+			Authorization: Token <token>
+		status: 204 No Content
+
+
+jobs:
+	GET:
+		headers:
+			Authorization: Token <token>
+		returns:
+			<list>:
+				- id
+				- title
+				- status
+				- publication_date
+				- computation_finish_date
+		status: 200 Ok
+  POST:
+		headers:
+			Authorization: Token <token>
+			Content-Type: application/json
+		json:
+			- title
+			- input
+		returns:
+			- title
+			- input
+		status: 201 Created
+	
+jobs/<uuid>:
+	GET:
+		headers:
+			Authorization: Token <token>
+		returns:
+			# - id
+			- title
+			- status
+			- input
+			- output
+			- publication_date
+			- computation_finish_date
+		status: 200 Ok
+	DELETE:
+		headers:
+			Authorization: Token <token>
+		status: 204 No Content
