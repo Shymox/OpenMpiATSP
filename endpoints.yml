@@ -33,6 +33,7 @@ auth/user:
 		returns:
 			- id
 			- username
+			- groups[list]
 		status: 200 Ok
 
 auth/logout:
