@@ -1,15 +1,7 @@
-from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.parsers import JSONParser
-from rest_framework import viewsets
 from rest_framework import generics
 from .serializers import JobListSerializer, JobCreateSerializer, JobDetailSerializer, JobResultSerializer
 from .models import Job
 from .permissions import IsRabbitGroup, IsRabbitGroup, IsOwnerOrAdminGroup
-from django.contrib.auth.models import User
-from rest_framework import permissions
-from django.utils import timezone
 
 class JobList(generics.ListCreateAPIView):
     permission_classes = [IsOwnerOrAdminGroup]

@@ -1,8 +1,6 @@
-from datetime import datetime
 from rest_framework import serializers
-from .models import Job
-from django.contrib.auth.models import User
 from django.utils import timezone
+from .models import Job
 
 class JobCreateSerializer(serializers.ModelSerializer):
     class Meta:
