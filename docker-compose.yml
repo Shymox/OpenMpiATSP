@@ -18,6 +18,31 @@ services:
     volumes:
       - dbvolume:/var/lib/mysql
 
+  mq:
+    image: rabbitmq:3-management
+    hostname: rabbit
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "RABBITMQ_ERLANG_COOKIE"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+   
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - mqvolume:/var/lib/rabbitmq
+    networks:
+      - mq-net
+
+  mqworker:
+    build: ./queue
+    command: ["python", "worker.py"]
+    restart: on-failure
+    depends_on:
+      - mq
+    networks:
+      - mq-net
+
   backend:
     build: ./backend
     command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
@@ -25,8 +50,10 @@ services:
       - "8000:8000"
     depends_on:
      - db
+     - mq
     networks:
      - db-net
+     - mq-net
      
   frontend:
     build: ./frontend
@@ -37,6 +64,9 @@ services:
 networks:
   db-net:
     driver: bridge
+  mq-net:
+    driver: bridge
 
 volumes:
   dbvolume:
+  mqvolume:
