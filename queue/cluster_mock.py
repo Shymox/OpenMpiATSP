@@ -3,7 +3,7 @@ import time
 import sys
 
 def main():
-    time.sleep(2)
+    time.sleep(5)
     with open(sys.argv[1], 'r') as file:
         print("**HERE WILL BE TSP RESULT**", file.readlines())
 

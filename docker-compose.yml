@@ -30,7 +30,7 @@ services:
       - 5672:5672
       - 15672:15672
     volumes:
-      - mqvolume:/var/lib/rabbitmq
+      - mqvolume:/var/lib/rabbitmq/
     networks:
       - mq-net
 
@@ -40,11 +40,13 @@ services:
     restart: on-failure
     depends_on:
       - mq
+      - backend
     networks:
       - mq-net
 
   backend:
     build: ./backend
+    hostname: backend
     command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
     ports:
       - "8000:8000"
