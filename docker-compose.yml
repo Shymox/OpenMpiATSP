@@ -38,6 +38,7 @@ services:
     build: ./queue
     command: ["python", "worker.py"]
     restart: on-failure
+    env_file: .env
     depends_on:
       - mq
       - backend
@@ -48,6 +49,7 @@ services:
     build: ./backend
     hostname: backend
     command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+    env_file: .env
     ports:
       - "8000:8000"
     depends_on:

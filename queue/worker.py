@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+import os
 import json
 import subprocess
 import pika
@@ -6,15 +7,15 @@ import requests
 
 # TODO: make it more secure, no hardcoded passwords!
 # login parameters for Rabbit Message Queue 
-MQ_HOST = "rabbit"
-MQ_USER = "rabbitmq"
-MQ_PASS = "rabbitmq"
-MQ_QUEUE = "cluster"
+MQ_HOST  = os.environ["MQ_HOST"]
+MQ_USER  = os.environ["MQ_USER"]
+MQ_PASS  = os.environ["MQ_PASS"]
+MQ_QUEUE = os.environ["MQ_QUEUE"]
 
 # login parameters for Django backend job status update
-BCK_ADDR = "http://backend:8000/"
-BCK_USER = "rabbitmq"
-BCK_PASS = "rabbitmq"
+BCK_ADDR = os.environ["BCK_ADDR"]
+BCK_USER = os.environ["BCK_USER"]
+BCK_PASS = os.environ["BCK_PASS"]
 
 bck_token = None
 

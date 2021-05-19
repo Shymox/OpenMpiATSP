@@ -3,14 +3,15 @@ from .serializers import JobListSerializer, JobCreateSerializer, JobDetailSerial
 from .models import Job
 from .permissions import IsRabbitGroup, IsRabbitGroup, IsOwnerOrAdminGroup
 
+import os
 import json
 import pika
 
 # login parameters for Rabbit Message Queue 
-MQ_HOST = "rabbit"
-MQ_USER = "rabbitmq"
-MQ_PASS = "rabbitmq"
-MQ_QUEUE = "cluster"
+MQ_HOST  = os.environ["MQ_HOST"]
+MQ_USER  = os.environ["MQ_USER"]
+MQ_PASS  = os.environ["MQ_PASS"]
+MQ_QUEUE = os.environ["MQ_QUEUE"]
 
 class JobList(generics.ListCreateAPIView):
     permission_classes = [IsOwnerOrAdminGroup]
