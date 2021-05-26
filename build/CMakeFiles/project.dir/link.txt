@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/project.dir/src/Array.cpp.o CMakeFiles/project.dir/src/List.cpp.o CMakeFiles/project.dir/src/main.cpp.o CMakeFiles/project.dir/src/Matrix.cpp.o CMakeFiles/project.dir/src/MpiHelper.cpp.o -o project  -Wl,-rpath,/usr/lib/openmpi -lcurses -lform /usr/lib/openmpi/libmpi_cxx.so /usr/lib/openmpi/libmpi.so 

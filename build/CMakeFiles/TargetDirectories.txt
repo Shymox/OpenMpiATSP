@@ -1,3 +1,0 @@
-/home/szymon/Dokumenty/AiiRProjekt/AiiR/build/CMakeFiles/rebuild_cache.dir
-/home/szymon/Dokumenty/AiiRProjekt/AiiR/build/CMakeFiles/edit_cache.dir
-/home/szymon/Dokumenty/AiiRProjekt/AiiR/build/CMakeFiles/project.dir
