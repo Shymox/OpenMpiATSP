@@ -18,4 +18,3 @@ All architecture parts are in separate docker containers.
  - Piotr Florkiewicz
  - Bartosz Hornicki
  - Szymon Pleśnierowicz
- - Grzegorz Szymczak
