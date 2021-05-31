@@ -22,4 +22,4 @@ include_directories(${CURSES_INCLUDE_DIR})
 
 
 add_executable(project ${SOURCES})
-target_link_libraries(project ${CURSES_LIBRARIES} ${MPI_LIBRARIES})
+target_link_libraries(project ${CURSES_LIBRARIES}  MPI::MPI_CXX)
