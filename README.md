@@ -18,3 +18,6 @@ All architecture parts are in separate docker containers.
  - Piotr Florkiewicz
  - Bartosz Hornicki
  - Szymon Pleśnierowicz
+
+## Starting entire project
+Use 'docker-compose up' command in project root folder.
