@@ -34,8 +34,8 @@ services:
     networks:
       - mq-net
 
-  mqworker:
-    build: ./queue
+  cluster:
+    build: ./cluster
     command: ["python", "worker.py"]
     restart: on-failure
     env_file: .env

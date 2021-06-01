@@ -83,11 +83,13 @@ def main():
 
         with open('buffer', 'w') as file:
             file.write(data)
-        proc = subprocess.Popen(["./cluster_mock.py", "buffer"], 
-            shell=False,
+        proc = subprocess.Popen(
+            "mpirun --hostfile hostfile -np 4 --allow-run-as-root project buffer",
+            shell=True,
             stdout=subprocess.PIPE
         )   
         out, err = proc.communicate()
+        out=out.decode('UTF-8')
         print(f"[worker] result: {out}")
 
         # post output and 'f' status
