@@ -36,8 +36,6 @@ services:
 
   cluster:
     build: ./cluster
-    command: ["python", "worker.py"]
-    restart: on-failure
     env_file: .env
     depends_on:
       - mq
@@ -48,7 +46,6 @@ services:
   backend:
     build: ./backend
     hostname: backend
-    command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
     env_file: .env
     ports:
       - "8000:8000"
@@ -61,7 +58,6 @@ services:
      
   frontend:
     build: ./frontend
-    command: ["npm", "start"]
     ports:
       - "3000:3000"
   
