@@ -9,6 +9,7 @@ auth/register:
 			user: 
 				- id
 				- username
+				- groups[list]
 			token: <token>
 		status: 200 Ok
 
@@ -23,6 +24,7 @@ auth/login:
 			user: 
 				- id
 				- username
+				- groups[list]
 			token: "<token>"
 		status: 200 Ok
 
@@ -72,7 +74,6 @@ jobs/<uuid>:
 		headers:
 			Authorization: Token <token>
 		returns:
-			# - id
 			- title
 			- status
 			- input
@@ -84,3 +85,17 @@ jobs/<uuid>:
 		headers:
 			Authorization: Token <token>
 		status: 204 No Content
+
+jobs/update/<uuid>: #user of Rabbit group only
+	PUT:
+		headers:
+			Authorization: Token <token>
+			Content-Type: application/json
+		json:
+			- status_short
+			- output
+		returns:
+			- status_short
+			- output
+			- computation_finish_date
+		status: 200 ok
