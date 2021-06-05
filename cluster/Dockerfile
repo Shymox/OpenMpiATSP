@@ -2,16 +2,17 @@ FROM python:3.9-buster
 ENV PYTHONUNBUFFERED 1
 
 WORKDIR /cluster
-COPY . .
 
 RUN apt-get update 
 RUN pip install --upgrade pip
+COPY requirements.txt .
 RUN pip3 install -r requirements.txt
 
 # FROM ubuntu
 ENV DEBIAN_FRONTEND="noninteractive" TZ="Europe/Warsaw"
 RUN apt-get -y install cmake g++ libncurses5-dev libopenmpi-dev
 
+COPY . .
 RUN cmake . && make
 
 CMD ["python", "worker.py"]
